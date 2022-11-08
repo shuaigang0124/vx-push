@@ -8,13 +8,15 @@ spring:
 #去申请 https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login
 wx:
   config:
-    appId: "wxb5564140924018bb"
-    appSecret: "399410ab093d118e0958aceea2048291"
+    appId: "*****************"
+    appSecret: "*****************"
 
+#去申请 https://tianqiapi.com/user/login
 calendar:
   config:
-    calendarAppId: "urwqjmtwqggrmjgm"
-    calendarAppSecret: "NkRqMU45M3YzWWF3aFdQeDRRK0p6QT09"
+    calendarAppId: "*****************"
+    calendarAppSecret: "*****************"
+#喝水提醒小助手的创建时间
 message:
   config:
     createTime: "2022-08-08"
@@ -22,8 +24,8 @@ message:
 #去申请 https://tianqiapi.com/user/login
 weather:
   config:
-    appid: "97355678"
-    appSecret: "Xb2wo4nu"
+    appid: "*****************"
+    appSecret: "*****************"
 
 server:
   port: 5211

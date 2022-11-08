@@ -19,13 +19,16 @@ public class WxController {
     @Autowired
     IWxService wxService;
 
-    /** 获取Token  每天早上8：00执行推送 */
+    /** 恋爱小助手 每天早上8：00执行推送 */
     @Scheduled(cron = "0 0 8 ? * *")
     @RequestMapping("/getMorning")
     public String getMorning() {
         return wxService.sendWxMsg();
     }
 
+    /** 喝水提醒小助手第一轮提醒  每天早上9：30执行推送
+     *  以下几轮每一小时后提醒
+     */
     @Scheduled(cron = "0 30 9 ? * *")
     @RequestMapping("/getRemindOne")
     public String getRemindOne() {
