@@ -1,6 +1,13 @@
 ## vx-push（微信测试号推送）
 * 项目优点：配置完成后，不用修改代码，直接使用数据库即可配置需要推送的用户以及推送的消息
 
+### 项目预览
+
+<img src="https://shuaigang.top/gsg/static-resource/formal/resource/img.webp" width="250"/>
+<img src="https://shuaigang.top/gsg/static-resource/formal/resource/img1.webp" width="250"/>
+<img src="https://shuaigang.top/gsg/static-resource/formal/resource/img2.webp" width="250"/>
+
+
 ### 项目运行条件：
 #### 第一步：注册微信公众号测试号
 1.点击如下链接，在微信公众平台注册一个微信公众测试号:
