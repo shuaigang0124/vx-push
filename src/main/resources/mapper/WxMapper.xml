@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gsg.wx.mapper.WxMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.gsg.wx.model.User">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="wx_number" property="wxNumber" />
+        <result column="city_num" property="cityNum" />
+        <result column="birthday" property="birthday" />
+        <result column="together_date" property="togetherDate" />
+        <result column="message" property="message" />
+        <result column="is_enabled" property="isEnabled" />
+        <result column="gmt_create" property="gmtCreate" />
+    </resultMap>
+
+
+    <insert id="insertChpText">
+        insert into chp (text) VALUES (#{text})
+    </insert>
+    <insert id="insertDuText">
+        insert into du (text) VALUES (#{text})
+    </insert>
+    <insert id="insertSleepText" parameterType="java.lang.String">
+        insert into sleep (text) VALUES (#{text})
+    </insert>
+
+
+    <select id="getAllUser" resultType="com.gsg.wx.model.User">
+        select * from user where is_enabled = 1
+    </select>
+
+    <select id="getTemp" resultType="com.gsg.wx.VO.TempVO">
+        select
+            u.id,
+            u.wx_number,
+            u.city_num,
+            u.birthday,
+            u.together_date,
+            u.message,
+            t.template
+        from
+            user_temp ut
+        left join user u on u.id = ut.user_id
+        left join template t on t.id = ut.temp_id
+        where
+            t.id = #{tempId}
+        and u.is_enabled = 1
+    </select>
+
+    <select id="getMessage" resultType="com.gsg.wx.model.Message" parameterType="java.lang.String">
+        select * from message where id = #{id}
+    </select>
+
+    <select id="findChpByText" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select 1 from chp where text = #{text}
+    </select>
+
+    <select id="findDuByText" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select 1 from du where text = #{text}
+    </select>
+
+    <select id="findSleepByText" resultType="java.lang.Integer" parameterType="java.lang.String">
+        select 1 from sleep where text = #{text}
+    </select>
+
+</mapper>

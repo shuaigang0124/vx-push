@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://175.178.9.64:3306/vx?useAffectedRows=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 1491900793
+
+#去申请 https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login
+wx:
+  config:
+    appId: "wxb5564140924018bb"
+    appSecret: "399410ab093d118e0958aceea2048291"
+
+calendar:
+  config:
+    calendarAppId: "urwqjmtwqggrmjgm"
+    calendarAppSecret: "NkRqMU45M3YzWWF3aFdQeDRRK0p6QT09"
+message:
+  config:
+    createTime: "2022-08-08"
+
+#去申请 https://tianqiapi.com/user/login
+weather:
+  config:
+    appid: "97355678"
+    appSecret: "Xb2wo4nu"
+
+server:
+  port: 5211
+
