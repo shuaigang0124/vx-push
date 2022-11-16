@@ -11,6 +11,7 @@ import com.gsg.wx.model.User;
 import com.gsg.wx.service.IWxService;
 import com.gsg.wx.utils.DateUtil;
 import com.gsg.wx.utils.HttpUtil;
+import com.gsg.wx.utils.LunarCalendarUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -189,8 +190,13 @@ public class IWxServiceImpl extends ServiceImpl<WxMapper, User> implements IWxSe
             String birthDay = "";
             String birthMsg = "无法识别";
             try {
+                String newD;
                 Calendar calendar = Calendar.getInstance();
-                String newD = calendar.get(Calendar.YEAR) + "-" + temp.getBirthday();
+                if (temp.getBirthday().startsWith("农历")) {
+                    newD = LunarCalendarUtil.lunarToSolar(calendar.get(Calendar.YEAR) + "-" + temp.getBirthday().substring(2));
+                } else {
+                    newD = calendar.get(Calendar.YEAR) + "-" + temp.getBirthday();
+                }
                 birthDay = DateUtil.daysBetween(date, newD);
                 if (Integer.parseInt(birthDay) < 0) {
                     Integer newBirthDay = Integer.parseInt(birthDay) + 365;
@@ -376,8 +382,13 @@ public class IWxServiceImpl extends ServiceImpl<WxMapper, User> implements IWxSe
             String date = DateUtil.formatDate(new Date(), "yyyy-MM-dd HH:mm:ss");
             String birthDay = "";
             try {
+                String newD;
                 Calendar calendar = Calendar.getInstance();
-                String newD = calendar.get(Calendar.YEAR) + "-" + temp.getBirthday();
+                if (temp.getBirthday().startsWith("农历")) {
+                    newD = LunarCalendarUtil.lunarToSolar(calendar.get(Calendar.YEAR) + "-" + temp.getBirthday().substring(2));
+                } else {
+                    newD = calendar.get(Calendar.YEAR) + "-" + temp.getBirthday();
+                }
                 birthDay = DateUtil.daysBetween(date, newD);
             } catch (ParseException e) {
                 log.error("birthDay获取失败" + e.getMessage());
