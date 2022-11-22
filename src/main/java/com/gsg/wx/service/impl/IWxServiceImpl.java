@@ -450,7 +450,7 @@ public class IWxServiceImpl extends ServiceImpl<WxMapper, User> implements IWxSe
     }
 
     @Override
-    public String sendWxCustomMsg(String message) {
+    public String sendWxCustomMsg(String id,String message) {
         //这里直接写死就可以，不用改，用法可以去看api
 //        String grantType = "client_credential";
         //封装请求数据
@@ -460,14 +460,17 @@ public class IWxServiceImpl extends ServiceImpl<WxMapper, User> implements IWxSe
         log.info("微信token响应结果=" + jsonObject1);
         token = (String) jsonObject1.get("access_token");
 
-        List<TempVO> tempList = wxMapper.getTemp("temp0004");
-
+//        List<TempVO> tempList = wxMapper.getTemp("temp0004");
+        String tId = wxMapper.getTemplateId("temp0004");
+        String vId = wxMapper.getWxNumber(id);
         List<JSONObject> errorList = new ArrayList<>();
-        for (TempVO temp : tempList) {
+//        for (TempVO temp : tempList) {
             JSONObject templateMsg = new JSONObject(new LinkedHashMap<>());
 
-            templateMsg.put("touser", temp.getWxNumber());
-            templateMsg.put("template_id", temp.getTemplate());
+//            templateMsg.put("touser", temp.getWxNumber());
+//            templateMsg.put("template_id", temp.getTemplate());
+            templateMsg.put("touser", vId);
+            templateMsg.put("template_id", tId);
 
             JSONObject messageObj = new JSONObject();
             messageObj.put("value", message);
@@ -483,12 +486,13 @@ public class IWxServiceImpl extends ServiceImpl<WxMapper, User> implements IWxSe
             JSONObject weChatMsgResult = JSONObject.parseObject(sendPost);
             if (!"0".equals(weChatMsgResult.getString("errcode"))) {
                 JSONObject error = new JSONObject();
-                error.put("openid", temp.getTemplate());
+//                error.put("openid", temp.getTemplate());
+                error.put("openid", tId);
                 error.put("errorMessage", weChatMsgResult.getString("errmsg"));
                 errorList.add(error);
             }
             log.info("sendPost=" + sendPost);
-        }
+//        }
         JSONObject result = new JSONObject();
         result.put("result", "success");
         result.put("errorData", errorList);

@@ -416,25 +416,24 @@ public class SftpUtils {
 
     /**
      * 测试
-     *  khsftp.mintrust.dev
-     *  crmuser/Crm_1234,tauser/Ta_12345
      */
-    public static void main(String[] args) {
-        SftpUtils sftp = null;
-        // 本地存放地址
-        String localPath = "D:\\my-ftp-test\\";
-        // Sftp下载路径
-        String sftpPath = "/data/ftpTest/";
-        List<String> filePathList = new ArrayList<String>();
-        try {
-            sftp = new SftpUtils("162.14.74.25", 22,"root", "ShuaiGang19980510...");
-            sftp.ftpLogin();
-            // 下载
-            sftp.downLoadDirectory(sftpPath, localPath);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            sftp.ftpLogOut();
-        }
-    }
+//    public static void main(String[] args) {
+//        SftpUtils sftp = null;
+//        // 本地存放地址
+////        String localPath = "D:\\my-ftp-test\\";
+//        // Sftp下载路径
+////        String sftpPath = "/data/ftpTest/";
+////        List<String> filePathList = new ArrayList<String>();
+//        try {
+//            sftp = new SftpUtils("175.178.9.64", 22,"root", "ShuaiGang19980510...");
+//            sftp.ftpLogin();
+//            sftp.deleteSFTP("/shuaigang/frontEnd/","jyh222.html");
+//            // 下载
+////            sftp.downLoadDirectory(sftpPath, localPath);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } finally {
+//            sftp.ftpLogOut();
+//        }
+//    }
 }

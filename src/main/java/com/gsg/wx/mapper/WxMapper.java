@@ -35,4 +35,8 @@ public interface WxMapper extends BaseMapper<User> {
     void insertDuText(String text);
 
     void insertSleepText(String text);
+
+    String getTemplateId(String templateId);
+
+    String getWxNumber(String vxId);
 }

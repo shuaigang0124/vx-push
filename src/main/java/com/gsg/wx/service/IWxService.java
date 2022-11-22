@@ -17,5 +17,5 @@ public interface IWxService extends IService<User> {
 
     String sendWxSleep(String messageId);
 
-    String sendWxCustomMsg(String message);
+    String sendWxCustomMsg(String id, String message);
 }

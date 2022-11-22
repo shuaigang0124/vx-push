@@ -64,5 +64,11 @@
     <select id="findSleepByText" resultType="java.lang.Integer" parameterType="java.lang.String">
         select 1 from sleep where text = #{text}
     </select>
+    <select id="getTemplateId" resultType="java.lang.String">
+        select template from template where id = #{templateId}
+    </select>
+    <select id="getWxNumber" resultType="java.lang.String">
+        select wx_number from user where id = #{vxId}
+    </select>
 
 </mapper>
